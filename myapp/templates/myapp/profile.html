@@ -1,0 +1,14 @@
+{% extends 'myapp/base.html' %} {% block content %}
+<h1>Welcome {{request.user}}</h1>
+
+<h3>Clusters Created by {{ user.username }}</h3>
+
+<ul>
+    {% for cluster in user_clusters %}
+    <li>{{ cluster.name }} (PDF: {{ cluster.pdf_file.url }})</li>
+    {% empty %}
+    <li>No clusters created.</li>
+    {% endfor %}
+</ul>
+
+{% endblock %}
