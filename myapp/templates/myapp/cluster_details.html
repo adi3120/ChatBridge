@@ -1,0 +1,8 @@
+{% extends 'myapp/base.html' %} {% block content %}
+<h1>Cluster Details</h1>
+
+<h3>Cluster Name: {{ cluster.name }}</h3>
+<p>PDF URL: {{ cluster.pdf_file.url }}</p>
+<p>API Key: {{ cluster.openai_api_key }}</p>
+
+{% endblock %}

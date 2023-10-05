@@ -3,12 +3,40 @@
 
 <h3>Clusters Created by {{ user.username }}</h3>
 
-<ul>
+<table border="5" cellpadding="5" cellspacing="5">
+    <tr>
+        <th>
+            ID
+        </th>
+        <th>
+            Name
+        </th>
+        <th>
+            PDF
+        </th>
+        <th>
+            API KEY
+        </th>
+        <th>
+            Data Path
+        </th>
+        <th>
+            Chatbot Link
+        </th>
+    </tr>
+
     {% for cluster in user_clusters %}
-    <li>{{ cluster.name }} (PDF: {{ cluster.pdf_file.url }})</li>
-    {% empty %}
-    <li>No clusters created.</li>
+    <tr>
+        <td>{{ cluster.id }}</td>
+        <td>{{ cluster.name }}</td>
+        <td>{{ cluster.txt_file.url }}</td>
+        <td>{{cluster.openai_api_key}}</td>
+        <td>{{cluster.chroma_db_directory}}</td>
+        <td>{{url}}{{cluster.get_absolute_url}}?q=</td>
+    </tr>
     {% endfor %}
+</table>
+
 </ul>
 
 {% endblock %}
