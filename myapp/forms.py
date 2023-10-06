@@ -31,7 +31,8 @@ from .models import Cluster
 class ClusterForm(forms.ModelForm):
     class Meta:
         model = Cluster
-        fields = ['name', 'txt_file', 'openai_api_key']
+        fields = ['name', 'txt_file']
+        # fields = ['name', 'txt_file', 'openai_api_key']
 
     def save(self, commit=True):
         instance = super().save(commit=False)
@@ -39,3 +40,8 @@ class ClusterForm(forms.ModelForm):
         if commit:
             instance.save()
         return instance
+    
+class UpdateTxtFileForm(forms.ModelForm):
+    class Meta:
+        model = Cluster
+        fields = ['txt_file']

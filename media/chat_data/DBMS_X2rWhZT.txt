@@ -1,0 +1,206 @@
+1. Can you define DBMS
+
+A database-management system (DBMS) is a collection of interrelated data 
+a set of programs to access those data. 
+
+The collection of data, usually referred to as the database,
+contains information relevant to an enterprise. 
+
+provide a way to store and retrieve database information that is both convenient and efficient.
+
+A DBMS is the database itself, along with all the software and functionality.
+
+perform different operations like 
+	addition
+	access
+	updating
+	deletion
+of the data.
+----------------------------------------------------------------------------
+2. Importance of database management
+File-processing systems has major disadvantages.
+i. Data Redundancy and inconsistency
+ii. Difficulty in accessing data
+iii. Data isolation
+iv. Integrity problems
+v. Atomicity problems
+vi. Concurrent-access anomalies
+vii. Security problems
+
+DBMS Advantages
+efficient processing
+efficient accessing
+ACID properties
+	Atomicity
+	Consistency
+	Integrity
+	Durability
+Security
+structure
+----------------------------------------------------------------------------
+3. Difference between RDBMS and DBMS
+
+RDBMS
+consists of collection of tables, 
+each of which is assigned a unique name.
+A row in a table represents a relationship among a set of values, and table is collection of such relationships.
+Row -> tuple
+Column -> attribute
+Table -> entity
+Domain -> set/range of values for a attribute/column
+Eg Age -> 1 - 100
+   name -> strings
+Schema -> structure/skeleton/blueprint of table
+schema -> columns
+Relational schema -> structure
+		     Name of relation
+		     columns
+eg Oracle, IBM, MySQL, MS Access
+Degree -> Number of columns
+Cardinality -> Total tuples
+Relational key -> set of attributes to uniquely identify each tuple
+Values should be atomic -> non divisible
+sequence dosnt matter
+follow integrity constraints
+Software that enable us to implement designed relational model.
+Table/Relation is the simplest form of data storage object in R-DB.
+MySQL is open-source RDBMS, and it uses SQL for all CRUD operations
+
+DBMS
+DBMS stores data as file.
+Data elements need to access individually.
+DBMS does not support distributed database.
+It deals with small quantity of data.
+----------------------------------------------------------------------------
+4. what is SQL
+SQL: Structured Query Language, used to access and manipulate data.
+CRUD with DB
+SQL is not DB, is a query language	
+MySQL used client-server model, where client is CLI or frontend that used services provided by MySQL server
+MYSQL -> RDBMS
+SQL -> language
+Size: TINY < SMALL < MEDIUM < INT < BIGINT.
+Query optimisation
+Data processing
+----------------------------------------------------------------------------
+5. what does PLSQL stand for
+PL/SQL is Oracle's procedural language extension to SQL. 
+PL/SQL allows you to mix SQL statements with procedural constructs. 
+PL/SQL provides the capability to define and execute PL/SQL program units such as procedures, functions, and packages.
+----------------------------------------------------------------------------
+6. SQL vs MYSQL
+7. SQL vs NoSQL
+
+NoSQL
+Non-relational or distributed database system.
+They have a dynamic schema
+These databases are not so good for complex queries
+Horizontally scalable
+Follows CAP(consistency, availability, partition tolerance)
+Examples: MongoDB, GraphQL, HBase, Neo4j, Cassandra, etc
+
+SQL
+Vertically scalable
+Fixed schema
+Follows ACID
+Good for complex queries
+Example MySQL, Oracle SQL etc
+----------------------------------------------------------------------------
+8. What are BASE propertied?
+set of principles that guide the design and operation of modern databases. 
+Basically Available
+	respond to user requests
+Soft State
+	state of the database can change over time, even without any explicit user intervention.
+	effects of background processes, updates to data, and other factors.
+	designed to handle this change gracefully, and ensure that it does not lead to data corruption or loss.
+Eventual Consistency
+	converge to a consistent state,
+handle large amounts of data.
+----------------------------------------------------------------------------
+9. what is a data model?
+It provides the conceptual tools for describing the design of a database
+
+Relational data model
+ER Data model -> data as objects
+	Entity
+	relationship
+	attributes
+Object based data model
+	functions
+	encapsulation
+	class
+Semistructured 
+	XML
+----------------------------------------------------------------------------
+10. what is an entity?
+An Entity is a “thing” or “object” in the real world that is distinguishable from all other objects.
+Each student in a college is an entity.
+uniquely identified by PK
+Strong entity 
+	Loan 
+		Loan ID
+		Borrower_name
+		amount
+		term
+		rate
+Weak entity 
+	Depends on strong entity
+	doesnt have sufficient attributes
+	Paritial key
+	
+	Payment
+		Loan ID
+		Payment number
+		Amount
+		Payment date
+
+Entity set
+	table
+	Student, customer
+
+Types of attributes
+	Simple
+		atomic
+		Account number
+		Roll number
+		first name
+		age
+	Composite
+		Non atomic
+		Name = firstname + lastname
+		address = city+country+pincode
+	SingleValued
+		ID
+		name
+	Multivalued 
+		Phone number
+		email
+		nominee
+		dependent
+	Derived
+		Age from DOB
+	NULL value
+		NA
+		missing entry
+
+Relationship
+	association between entity
+Strong 
+	between independent entity
+Weak 
+	between weak and strong entity
+Degree
+	number of entity in relationship
+Unary
+	Employee manages employee
+Binary 
+	Student takes course
+Ternary
+	employee works in a department
+	employee works for a project
+
+Extended ER
+Specialisation
+Generatlisation
+Aggregation

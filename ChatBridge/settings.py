@@ -41,11 +41,37 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 ]
-CORS_ALLOWED_ORIGINS = [
-    "http://127.0.0.1:8000",  # Adjust this to match your frontend origin
-    "http://localhost:8000",  # Add any other allowed origins as needed
-]
+# CORS_ALLOWED_ORIGINS = [
+#     "http://127.0.0.1:8000",  # Adjust this to match your frontend origin
+#     "http://localhost:8000",  # Add any other allowed origins as needed
+#     "http://localhost:5500",  # Add any other allowed origins as needed
+#     "http://127.0.0.1:5500",  # Add any other allowed origins as needed
+# ]
+
+CORS_ALLOW_ALL_ORIGINS = True
+# CORS_ALLOW_ALL_ORIGINS = True # If this is used then `CORS_ALLOWED_ORIGINS` will not have any effect
+# CORS_ALLOW_CREDENTIALS = True
+# CORS_ALLOW_HEADERS = [
+# 'accept',
+# 'accept-encoding',
+# 'authorization',
+# 'content-type',
+# 'dnt',
+# 'origin',
+# 'user-agent',
+# 'x-csrftoken',
+# 'x-requested-with',
+# ]
+# CORS_ALLOW_METHODS = [
+# 'DELETE',
+# 'GET',
+# 'OPTIONS',
+# 'PATCH',
+# 'POST',
+# 'PUT',
+# ]
 MIDDLEWARE = [
+	'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
