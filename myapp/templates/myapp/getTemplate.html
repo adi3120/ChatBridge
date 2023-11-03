@@ -1,0 +1,25 @@
+{% extends 'myapp/base.html' %} {% load static %} {% block title %}Get Template{% endblock title %} {% block content %}
+
+<!-- <div class='make-snippet'>
+    <h1>I'm going to become <span class='whatever'>a code snippet</span></h1>
+</div> -->
+
+<div class="tempcontainer">
+
+    <pre class="htmlcode">
+		<h1>HTML Code</h1>
+		{{html}}
+	</pre>
+
+    <pre class="jscode">
+		<h1>Javascript Code</h1>
+
+		{{js}}
+	</pre>
+
+    <pre class="csscode">
+		<h1>CSS Code</h1>
+		{{css}}
+	</pre>
+</div>
+{%endblock%}

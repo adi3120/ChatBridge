@@ -1,0 +1,42 @@
+.make-snippet {
+    color: white;
+}
+
+.htmlcode {
+    border: 1px solid red;
+    width: fit-content;
+    padding: 0.5em;
+}
+
+.jscode {
+    border: 1px solid red;
+    width: fit-content;
+    padding: 0.5em;
+}
+
+.csscode {
+    border: 1px solid red;
+    width: fit-content;
+    padding: 0.5em;
+}
+
+.tempcontainer {
+    color: white;
+    padding: 1em;
+    display: flex;
+    justify-content: center;
+    width: fit-content;
+}
+
+.htmlcode,
+.jscode,
+.csscode {
+    border: 1px solid red;
+    padding: 0.5em;
+    margin: 10px;
+    /* Add spacing between the code blocks */
+    white-space: pre-wrap;
+    /* Allow text to wrap */
+    max-width: 100%;
+    height: fit-content;
+}

@@ -1,0 +1,124 @@
+/* Style for the navigation bar */
+
+:root {
+    --background-rgb: 2 6 23;
+    --background-light-rgb: 30 41 59;
+    --border-rgb: 255 255 255;
+    --border: 1px solid rgb(var(--border-rgb) / 20%);
+    --hyperplexed-main-rgb: 41 121 255;
+    --hyperplexed-main-light-rgb: 56 182 255;
+    --hyperplexed-secondary-rgb: 42 252 152;
+    --card-size: 480px;
+    --font-size: 0.8rem;
+    --logo-size: calc(var(--card-size) * 0.3);
+}
+
+* {
+    border: 0;
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+}
+
+a {
+    color: white;
+}
+
+.toppadding {
+    width: 100vw;
+    height: 1em;
+    margin-top: 0.5em;
+    background-color: white;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    /* Background color for the navbar */
+    color: #fff;
+    /* Text color */
+    padding: 10px;
+}
+
+body {
+    overflow-x: hidden;
+    background-color: black;
+}
+
+
+/* Style for the website name on the left */
+
+.navbar-left {
+    font-size: 24px;
+}
+
+
+/* Style for the right side of the navbar (login and register links) */
+
+.navbar-right ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.navbar-right ul li {
+    display: inline;
+    margin-right: 10px;
+}
+
+.navbar-right ul li a {
+    text-decoration: none;
+    color: #fff;
+    /* Text color for links */
+}
+
+
+/* Style for the logout link (only visible when the user is logged in) */
+
+.navbar-right ul li.logout-link {
+    display: none;
+}
+
+.navbar-left {
+    font-size: 24px;
+    color: #fff;
+}
+
+.card {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.card-letters {
+    color: rgb(255, 255, 255);
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    width: 100%;
+    height: 90%;
+    font-size: smaller;
+    opacity: 0;
+    transition: opacity 400ms;
+    -webkit-mask-image: radial-gradient( calc( var(--card-size) * 0.8) circle at var(--x) var(--y), rgb(255 255 255) 20%, rgb(255 255 255 / 25%), transparent);
+}
+
+.card-gradient {
+    height: 80vh;
+    width: 100vw;
+    position: absolute;
+    background: url("/static/myapp/images/grad8.png") center/cover no-repeat;
+    /* background: radial-gradient( rgb(var(--background-light-rgb)) 40%, rgb(var(--hyperplexed-main-rgb)) 50%, rgb(var(--hyperplexed-main-light-rgb)), rgb(var(--hyperplexed-secondary-rgb))); */
+    mix-blend-mode: darken;
+    pointer-events: none;
+    z-index: 3;
+}
+
+.card:hover .card-letters {
+    opacity: 1;
+}
+
+.card:hover {
+    cursor: pointer;
+}

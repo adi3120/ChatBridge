@@ -1,0 +1,30 @@
+.profilecontainer {
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100vw;
+}
+
+.profilecontainer .intro {
+    padding: 2em;
+}
+
+.profilecontainer .intro h3 {
+    border: 1px solid white;
+    border-radius: 1em;
+    width: max-content;
+    padding: 1em;
+    margin: 1em;
+}
+
+.profilecontainer .created * {
+    border: 2px solid white;
+    border-collapse: collapse;
+    padding: 0.5em;
+}
+
+.profilecontainer .created table {
+    width: max-content;
+}

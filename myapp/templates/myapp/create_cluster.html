@@ -1,8 +1,11 @@
 {% extends 'myapp/base.html' %} {% block content %}
-<h1>Create Chatbot</h1>
-<form method="post" enctype="multipart/form-data">
-    {% csrf_token %} {{ form.as_p }}
-    <button type="submit">Submit</button>
-</form>
+<div class="createformcontainer">
+
+    <h1>Create Chatbot</h1>
+    <form class="createform" method="post" enctype="multipart/form-data">
+        {% csrf_token %} {{ form.as_p }}
+        <button type="submit">Submit</button>
+    </form>
+</div>
 
 {% endblock %}

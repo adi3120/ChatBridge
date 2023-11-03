@@ -1,1 +1,11 @@
-{% extends 'myapp/base.html' %} {% load static %} {% block title %}Home{% endblock title %} {% block home %} {%endblock home%}
+{% extends 'myapp/base.html' %} {% load static %} {% block title %}Home{% endblock title %} {% block content %}
+
+<div class="card">
+    <div class="card-gradient"></div>
+    <div class="card-letters"></div>
+</div>
+
+<script src="{% static 'myapp/js/home.js' %}"></script>
+
+
+{%endblock content%}

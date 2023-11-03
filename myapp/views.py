@@ -112,7 +112,7 @@ def create_cluster(request):
 # def cluster_details(request, cluster_id):
 #     cluster = get_object_or_404(Cluster, id=cluster_id)
 #     # You can add more context data or logic here
-#     return render(request, 'myapp/cluster_details.html', {'cluster': cluster})
+#     return render(request, 'myapp/cluster_details.html', {{'cluster': cluster}})
 
 from .forms import UpdateTxtFileForm
 from django.views.generic.edit import UpdateView
@@ -155,3 +155,137 @@ class UpdateClusterTxtFileView(UpdateView):
         cluster.chroma_db_directory = chroma_db_path
         cluster.save()        
         return super().form_valid(form)
+    
+
+
+def deletebot(request, cluster_id):
+    cluster = get_object_or_404(Cluster, id=cluster_id)
+
+        # Clean up any associated data or files if needed (similar to the model's delete method)
+        # Example: Delete the associated txt_file
+    if cluster.txt_file:
+        cluster.txt_file.delete()
+
+    cluster.delete()
+    return redirect('profile')
+
+
+def gettemplate(request, cluster_id):
+    cluster = get_object_or_404(Cluster, id=cluster_id)
+
+        # Clean up any associated data or files if needed (similar to the model's delete method)
+        # Example: Delete the associated txt_file
+    url=str(get_current_site(request))+cluster.get_absolute_url
+    
+    html="""
+    <div class="chat-container">
+        <div class="chat-log" id="chat-log">
+        </div>
+        <div class="input-container">
+            <input type="text" id="user-input" placeholder="Type your message...">
+            <button id="send-button">Send</button>
+        </div>
+    </div>
+    """ 
+
+    js = f"""
+    document.addEventListener('DOMContentLoaded', function() {{
+        const chatLog = document.getElementById('chat-log');
+        const userInput = document.getElementById('user-input');
+        const sendButton = document.getElementById('send-button');
+
+        function addMessage(user, message) {{
+            const messageDiv = document.createElement('div');
+            messageDiv.classList.add('message');
+            messageDiv.innerHTML = `<strong>${{user}}:</strong> ${{message}}`;
+            chatLog.appendChild(messageDiv);
+            chatLog.scrollTop = chatLog.scrollHeight;
+        }}
+
+        sendButton.addEventListener('click', function() {{
+            const userMessage = userInput.value.trim();
+
+            if (userMessage) {{
+                addMessage('User', userMessage);
+                userInput.value = '';
+
+                let request = new XMLHttpRequest();
+                request.open("GET", `{url}?q=${{userMessage}}`);
+                request.send();
+                request.onload = () => {{
+                    if (request.status == 200) {{
+                        let data = request.response + '<br><br>';
+                        console.log(data)
+                        addMessage('Chatbot', data);
+                    }}
+                }}
+            }}
+        }});
+
+        // Handle Enter key press
+        userInput.addEventListener('keydown', function(event) {{
+            if (event.key === 'Enter') {{
+                sendButton.click();
+            }}
+        }});
+    }});
+"""
+    
+    css="""
+body {
+    font-family: Arial, sans-serif;
+}
+
+.chat-container {
+    max-width: 400px;
+    margin: 0 auto;
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px #ccc;
+}
+
+.chat-log {
+    height: 70vh;
+    overflow-y: scroll;
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+.input-container {
+    display: flex;
+}
+
+#user-input {
+    flex: 1;
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+#send-button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+#send-button:hover {
+    background-color: #0056b3;
+}
+"""
+
+    context = {
+        'html':html,
+        'js':js,
+        'css':css,
+        'url':url
+    }
+
+    return render(request, 'myapp/getTemplate.html', context)
+

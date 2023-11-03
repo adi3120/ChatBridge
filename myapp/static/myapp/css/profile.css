@@ -1,0 +1,105 @@
+.profilecontainer {
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100vw;
+}
+
+.profilecontainer .intro {
+    padding: 1em;
+}
+
+.profilecontainer .intro h3 {
+    border: 1px solid white;
+    border-radius: 1em;
+    width: max-content;
+    padding: 1em;
+    margin: 1em;
+}
+
+.profilecontainer .created {
+    border-radius: 1em;
+    padding: 1em;
+    height: fit-content;
+    flex-direction: row;
+    display: flex;
+    gap: 1em;
+    align-items: center;
+}
+
+.profilecontainer .created .icon {
+    width: 5em;
+    height: 5em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 4;
+}
+
+.profilecontainer .created .icon img {
+    object-fit: contain;
+    width: 100%;
+    height: 100%;
+}
+
+.profilecontainer .created .chatbot {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid white;
+    border-radius: 1em;
+}
+
+.profilecard {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 1;
+    position: relative;
+    margin: 1rem;
+    border-radius: 2rem;
+    overflow: hidden;
+    cursor: pointer;
+    width: 100%;
+    height: 60%;
+}
+
+.profilecard-letters {
+    --x: 0px;
+    --y: 0px;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    height: 100%;
+    width: 100%;
+    color: white;
+    font-size: var(--font-size);
+    font-weight: 500;
+    word-wrap: break-word;
+    opacity: 0;
+    transition: opacity 400ms;
+    -webkit-mask-image: radial-gradient( calc(var(--card-size) * 0.8) circle at var(--x) var(--y), rgb(255 255 255) 20%, rgb(255 255 255 / 25%), transparent);
+    scale: 1.03;
+}
+
+.profilecard-gradient {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    background: radial-gradient( rgb(var(--background-light-rgb)) 40%, rgb(var(--hyperplexed-main-rgb)) 50%, rgb(var(--hyperplexed-main-light-rgb)), rgb(var(--hyperplexed-secondary-rgb)));
+    mix-blend-mode: darken;
+    pointer-events: none;
+    z-index: 3;
+}
+
+.profilecard:hover .profilecard-letters {
+    opacity: 1;
+}
+
+.profilecard:hover {
+    cursor: pointer;
+}

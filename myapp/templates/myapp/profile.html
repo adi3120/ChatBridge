@@ -1,42 +1,42 @@
-{% extends 'myapp/base.html' %} {% block content %}
-<h1>Welcome {{request.user}}</h1>
+{% extends 'myapp/base.html' %} {% block content %} {% load static %}
+<div class="profilecontainer">
 
-<h3>Chatbots Created by {{ user.username }}</h3>
+    <div class="intro">
 
-<table border="5" cellpadding="2" cellspacing="2">
-    <tr>
-        <th>
-            ID
-        </th>
-        <th>
-            Name
-        </th>
-        <th>
-            PDF
-        </th>
-        <!-- <th>
-            API KEY
-        </th> -->
-        <th>
-            Data Path
-        </th>
-        <th>
-            Chatbot Link
-        </th>
-    </tr>
+        <h1>Welcome {{request.user}}</h1>
 
-    {% for cluster in user_clusters %}
-    <tr>
-        <td>{{ cluster.id }}</td>
-        <td>{{ cluster.name }}</td>
-        <td>{{ cluster.txt_file.url }}</td>
-        <!-- <td>{{cluster.openai_api_key}}</td> -->
-        <td>{{cluster.chroma_db_directory}}</td>
-        <td>{{url}}{{cluster.get_absolute_url}}?q=</td>
-    </tr>
-    {% endfor %}
-</table>
+        <h3 style="background-color: green;"><a href="{% url 'create_cluster'%}">Create New Chatbot</a> </h3>
+    </div>
+    <h3>Chatbots Created by {{ user.username }}</h3>
 
-</ul>
+    <div class="created">
+        {% for cluster in user_clusters %}
+        <div class="chatbot">
+            <div class="profilecard">
+                <div class="profilecard-gradient"></div>
+                <div class="icon">
+                    <img src="{%static 'myapp/images/chatbot.png'%}" alt="">
+                </div>
+                <div class="profilecard-letters"></div>
+            </div>
+            <div class="info">
+                <div class="id">ID: {{ cluster.id }}</div>
+                <div class="name">Name: {{ cluster.name }}</div>
+                <!-- <div class="pdf">File Name: {{ cluster.txt_file.url }}</div> -->
+                <!-- <div class="datapath">File Path: {{cluster.chroma_db_directory}}</div> -->
+                <div class="chtbtlink">Chatbot Link: {{url}}{{cluster.get_absolute_url}}?q=</div>
+                <div class="actions">
+                    <a style="background-color: blue;" href="{% url 'updatebot' cluster.id %} ">Update</a> |
+                    <a style="background-color: red;" href="{% url 'deletebot' cluster.id %} ">Delete</a> |
+                    <a style="background-color: darkviolet;" href="{% url 'gettemplate' cluster.id %} ">Get Chatbot Template</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+
+    </div>
+
+</div>
+<script src="{% static 'myapp/js/profile.js' %}"></script>
 
 {% endblock %}
